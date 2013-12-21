@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: expense_development
   pool: 5
-  username: expense
+  username: Albert
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,7 +48,7 @@ test:
   encoding: unicode
   database: expense_test
   pool: 5
-  username: expense
+  username: Albert
   password:
 
 production:
@@ -56,5 +56,5 @@ production:
   encoding: unicode
   database: expense_production
   pool: 5
-  username: expense
+  username: Albert
   password:
