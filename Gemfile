@@ -4,11 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'haml-rails'
-gem 'twitter-bootstrap-rails'
+# gem 'twitter-bootstrap-rails'
+gem 'bootstrap-on-rails'
 gem 'less-rails'
-gem 'therubyracer'
+gem 'therubyracer', :platform => :ruby
 gem 'jquery-ui-rails'
-gem 'designmodo-flatuipro-rails'
+gem 'designmodo-flatuipro-rails', '~> 1.2.2.0.branch'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
