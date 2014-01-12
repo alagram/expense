@@ -4,7 +4,14 @@
     .form-group
       %input.form-control{placeholder: "Name", type: "text"}/
     .form-group
-      %input.form-control{placeholder: "Shop", type: "text"}/
-    %h6 Or
+      %input.form-control{placeholder: "Price", type: "text"}/
     .form-group
-      %button.btn.btn-default.btn-wide Sign Up
+      %input.form-control{placeholder: "Shop", type: "text"}/
+
+    %h6 Or Select Shop
+    .form-group
+      %select#shop
+        %option(value= "1") Game
+        %option(value= "2") Shoprite
+    .form-group
+      %button.btn.btn-default.btn-wide Add Expense
