@@ -49,8 +49,8 @@ end
 
 group :test, :development do
   # gem 'rspec-rails'
-  # gem 'pry'
-  # gem 'pry-nav'
+  gem 'pry'
+  gem 'pry-nav'
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
