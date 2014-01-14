@@ -1,0 +1,56 @@
+@import "variables";
+
+.top-menu {
+  background: @primary-bg;
+  height: @top-menu-height;
+  line-height: @top-menu-height + @top-menu-margin-bump;
+  width: @top-menu-width;
+  padding-left: @menus-padding-left;
+  margin-top: @top-menu-margin-top;
+  margin-bottom: @top-menu-height;
+
+  .logo {
+    color: @white;
+    display: inline-block;
+    font-size: @logo-font-size;
+    width: @top-menu-logo-width - @menus-padding-left;
+  }
+
+  .top-menu-nav {
+      display: inline-block;
+      padding-left: @content-padding-left;
+
+      .top-menu-nav-list {
+
+          li {
+              display: inline-block;
+              font-weight: bold;
+              font-size: @top-menu-item-font-size;
+              padding-right: @top-menu-item-padding-right;
+
+              a{
+                color: @gray-medium;
+            }
+
+          }
+
+      }
+  }
+
+  .search-container {
+    display: inline-block;
+    float: right;
+    padding-right: @top-menu-item-padding-right;
+
+    .search-box {
+      height: 34px;
+      width: 222px;
+      border-radius: 16px;
+      border: none;
+      line-height: 34px;
+      padding: 0 15px;
+    }
+
+  }
+
+}

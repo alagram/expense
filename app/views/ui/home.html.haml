@@ -1,0 +1,17 @@
+.content
+  #home.col-md-4.col-md-offset-4
+    %h6 Add New Expense
+    .form-group
+      %input.form-control{placeholder: "Name", type: "text"}/
+    .form-group
+      %input.form-control{placeholder: "Price", type: "text"}/
+    .form-group
+      %input.form-control{placeholder: "Shop", type: "text"}/
+
+    %h6 Or Select Shop
+    .form-group
+      %select#shop
+        %option(value= "1") Game
+        %option(value= "2") Shoprite
+    .form-group
+      %button.btn.btn-default.btn-wide Add Expense
