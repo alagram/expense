@@ -48,7 +48,7 @@ group :test do
 end
 
 group :test, :development do
-  # gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'pry'
   gem 'pry-nav'
 end
