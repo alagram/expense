@@ -40,7 +40,7 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'fabrication'
-  # gem 'faker'
+  gem 'faker'
   # gem 'capybara'
   # gem 'launchy'
   # gem 'selenium-webdriver'
