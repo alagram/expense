@@ -1,3 +1,3 @@
 Fabricator(:shop) do
-  name { Faker::Lorem(word).capitalize }
+  name { Faker::Lorem.word.capitalize }
 end
