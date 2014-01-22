@@ -27,6 +27,16 @@ describe ItemsController do
         expect(flash[:success]).to be_present
       end
     end
-    context "with invalid attributes"
+
+    context "with invalid attributes" do
+      it "renders the new template" do
+        post :create, item: Fabricate.attributes_for(:item, name: nil)
+        expect(response).to render_template :new
+      end
+      it "it does not create an item" do
+        post :create, item: Fabricate.attributes_for(:item, price: nil)
+        expect(Item.count).to eq(0)
+      end
+    end
   end
 end
