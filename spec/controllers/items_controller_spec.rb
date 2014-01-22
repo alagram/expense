@@ -11,19 +11,23 @@ describe ItemsController do
   describe "POST create" do
     context "with valid attributes" do
       it "redirects to the new item page" do
-        post :create, item: Fabricate.attributes_for(:item)
+        shop = Fabricate(:shop)
+        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(response).to redirect_to new_item_path
       end
       it "creates a new item" do
-        post :create, item: Fabricate.attributes_for(:item)
+        shop = Fabricate(:shop)
+        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(Item.count).to eq(1)
       end
       it "it creates an item associated with a shop" do
-        post :create, item: Fabricate.attributes_for(:item)
-        expect(Item.first.shop).to eq(Shop.first)
+        shop = Fabricate(:shop)
+        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
+        expect(Item.first.shop).to eq(shop)
       end
       it "sets the flash success message" do
-        post :create, item: Fabricate.attributes_for(:item)
+        shop = Fabricate(:shop)
+        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(flash[:success]).to be_present
       end
     end
