@@ -46,6 +46,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    fabrication (2.9.6)
     haml (4.0.4)
       tilt
     haml-rails (0.5.1)
@@ -171,6 +172,7 @@ DEPENDENCIES
   bootstrap-on-rails
   coffee-rails (~> 4.0.0)
   designmodo-flatuipro-rails (~> 1.2.2.0.branch)
+  fabrication
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails

@@ -39,7 +39,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  # gem 'fabrication'
+  gem 'fabrication'
   # gem 'faker'
   # gem 'capybara'
   # gem 'launchy'
