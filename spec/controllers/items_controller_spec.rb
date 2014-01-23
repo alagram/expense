@@ -30,6 +30,10 @@ describe ItemsController do
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(flash[:success]).to be_present
       end
+      it "creates a shop and associtiates it with item if shop name is entered" do
+        post :create, item: Fabricate.attributes_for(:item, new_shop: "Kuala")
+        expect(Item.first.shop.name).to eq("Kuala")
+      end
     end
 
     context "with invalid attributes" do
