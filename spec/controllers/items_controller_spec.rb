@@ -9,6 +9,10 @@ describe ItemsController do
     end
   end
 
+  describe "GET index" do
+
+  end
+
   describe "POST create" do
 
     let(:shop) { Fabricate(:shop) }
