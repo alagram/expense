@@ -5,6 +5,7 @@ describe ItemsController do
     it "sets the @item instance variable" do
       get :new
       expect(assigns(:item)).to be_new_record
+      expect(assigns(:item)).to be_instance_of(Item)
     end
   end
 
