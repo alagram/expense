@@ -10,7 +10,13 @@ describe ItemsController do
   end
 
   describe "GET index" do
-
+    it "sets the @items instance varaible" do
+      shop = Fabricate(:shop)
+      egg = Fabricate(:item, shop_id: shop.id)
+      milk = Fabricate(:item, shop_id: shop.id)
+      get :index
+      expect(assigns(:items)).to match_array([egg, milk])
+    end
   end
 
   describe "POST create" do
