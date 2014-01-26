@@ -6,6 +6,8 @@ class Item < ActiveRecord::Base
   attr_accessor :new_shop
   before_save :create_shop
 
+  delegate :name, to: :shop, prefix: true
+
   private
 
   def create_shop
