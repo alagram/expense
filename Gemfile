@@ -10,6 +10,7 @@ gem 'less-rails'
 gem 'therubyracer', :platform => :ruby
 gem 'jquery-ui-rails'
 gem 'designmodo-flatuipro-rails', '~> 1.2.2.0.branch'
+gem 'rack-mini-profiler'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
