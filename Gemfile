@@ -52,6 +52,7 @@ group :test, :development do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'pry'
   gem 'pry-nav'
+  gem 'rails-erd'
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
