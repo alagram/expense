@@ -30,6 +30,7 @@ gem 'jquery-rails'
 group :development do
   # Use postgresql as the database for Active Record
   gem 'pg'
+  gem 'thin'
 end
 
 group :production do
