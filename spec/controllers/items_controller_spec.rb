@@ -21,28 +21,30 @@ describe ItemsController do
 
   describe "POST create" do
 
-    let(:shop) { Fabricate(:shop) }
-
     context "with valid attributes" do
       it "redirects to the new item page" do
+        shop = Fabricate(:shop)
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(response).to redirect_to new_item_path
       end
       it "creates a new item" do
+        shop = Fabricate(:shop)
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(Item.count).to eq(1)
       end
       it "it creates an item associated with a shop" do
+        shop = Fabricate(:shop)
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(Item.first.shop).to eq(shop)
       end
       it "sets the flash success message" do
+        shop = Fabricate(:shop)
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(flash[:success]).to be_present
       end
       it "creates a shop and associtiates it with item if shop name is entered" do
-        post :create, item: Fabricate.attributes_for(:item, new_shop: "Kuala")
-        expect(Item.first.shop.name).to eq("Kuala")
+        post :create, item: Fabricate.attributes_for(:item, new_shop: "Koala")
+        expect(Item.first.shop_name).to eq("Koala")
       end
     end
 
