@@ -3,4 +3,6 @@ Expense::Application.routes.draw do
   root to: 'items#index'
 
   resources :items, only: [:new, :create]
+
+  get 'find', to: 'items#find'
 end
