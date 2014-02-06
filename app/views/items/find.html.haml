@@ -1,5 +1,5 @@
 .dialog.dialog-info.contain
-  %form
-    %input.control#from_date(name="s" type="text" placeholder="from date")
-    %input.control#to_date(name = "e" type="text" placeholder="to date")
+  = form_tag search_items_path, method: :get do
+    = text_field_tag :search, nil, class: "control", id: "from_date", name: "s", autocomplete: "off", placeholder: "from date"
+    = text_field_tag :search, nil, class: "control", id: "to_date", name: "e", autocomplete: "off", placeholder: "from date"
     %input.btn.btn-default.btn-xs(type="submit" value="Search")
