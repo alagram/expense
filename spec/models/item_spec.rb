@@ -17,5 +17,10 @@ describe Item do
     item3 = Fabricate(:item)
     expect(Item.search("2013-12-01", "2014-02-06")).to eq([item3, item2, item1])
   end
+  it "returns an empty array for a search that matches nothing" do
+    item1 = Fabricate(:item, created_at: 1.month.ago)
+    item2 = Fabricate(:item)
+    expect(Item.search("2012-12-01", "2013-02-06")).to eq([])
+  end
  end
 end
