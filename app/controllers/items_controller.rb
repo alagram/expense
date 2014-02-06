@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @results = Item.search(params[:s], params[:e])
+    @results = Item.includes(:shop).search(params[:s], params[:e])
   end
 
   private
