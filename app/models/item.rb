@@ -9,6 +9,10 @@ class Item < ActiveRecord::Base
 
   delegate :name, to: :shop, prefix: true
 
+  def self.search(start_date, end_date)
+    where("created_at::date >= ? AND created_at::date <= ?", start_date, end_date)
+  end
+
   private
 
   def create_shop
