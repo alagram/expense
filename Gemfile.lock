@@ -41,6 +41,7 @@ GEM
     coffee-script-source (1.6.3)
     commonjs (0.2.7)
     daemons (1.1.9)
+    database_cleaner (1.0.1)
     designmodo-flatuipro-rails (1.2.2.0.branch)
       bootstrap-on-rails
       jquery-rails (>= 2.2.1)
@@ -188,6 +189,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-on-rails
   coffee-rails (~> 4.0.0)
+  database_cleaner (~> 1.0.1)
   designmodo-flatuipro-rails (~> 1.2.2.0.branch)
   fabrication
   faker
