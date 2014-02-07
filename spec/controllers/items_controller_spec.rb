@@ -64,7 +64,7 @@ describe ItemsController do
     it "sets @results instance variable" do
       item1 = Fabricate(:item, created_at: 1.month.ago)
       item2 = Fabricate(:item)
-      get :search, s: "2014-01-01", e: "2014-02-06"
+      get :search, s: "2014-01-01", e: "#{Date.today}"
       expect(assigns(:results)).to match_array([item2, item1])
     end
   end
