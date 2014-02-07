@@ -46,7 +46,7 @@ group :test do
   # gem 'capybara'
   # gem 'launchy'
   # gem 'selenium-webdriver'
-  # gem 'database_cleaner', '~> 1.0.1'
+  gem 'database_cleaner', '~> 1.0.1'
 end
 
 group :test, :development do
