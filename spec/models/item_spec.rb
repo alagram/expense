@@ -9,13 +9,13 @@ describe Item do
  describe "search" do
   it "returns an array of one item for an exact match" do
     item = Fabricate(:item)
-    expect(Item.search("2014-02-01", "2014-02-06")).to eq([item])
+    expect(Item.search("2014-02-01", Time.now)).to eq([item])
   end
   it "returns an array of all matches ordered by created at descending" do
     item1 = Fabricate(:item, created_at: 1.month.ago)
     item2 = Fabricate(:item, created_at: 2.weeks.ago)
     item3 = Fabricate(:item)
-    expect(Item.search("2013-12-01", "2014-02-06")).to eq([item3, item2, item1])
+    expect(Item.search("2013-12-01", Time.now)).to eq([item3, item2, item1])
   end
   it "returns an empty array for a search that matches nothing" do
     item1 = Fabricate(:item, created_at: 1.month.ago)
