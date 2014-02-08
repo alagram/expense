@@ -43,7 +43,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'fabrication'
   gem 'faker'
-  # gem 'capybara'
+  gem 'capybara'
   # gem 'launchy'
   # gem 'selenium-webdriver'
   gem 'database_cleaner', '~> 1.0.1'
