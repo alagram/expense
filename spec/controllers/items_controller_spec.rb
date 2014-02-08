@@ -61,11 +61,14 @@ describe ItemsController do
   end
 
   describe "GET search" do
-    it "sets @results instance variable" do
-      item1 = Fabricate(:item, created_at: 1.month.ago)
-      item2 = Fabricate(:item)
-      get :search, s: "2014-01-01", e: "#{Date.today}"
-      expect(assigns(:results)).to match_array([item2, item1])
+    context "with valid attributes" do
+      it "sets @results instance" do
+        item1 = Fabricate(:item, created_at: 1.month.ago)
+        item2 = Fabricate(:item)
+        get :search, s: "2014-01-01", e: "#{Date.today}"
+        expect(assigns(:results)).to match_array([item2, item1])
+      end
     end
+    context "with invalid attributes"
   end
 end
