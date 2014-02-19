@@ -83,13 +83,13 @@ describe ItemsController do
         get :search, s: "", e: nil
         expect(response).to render_template :find
       end
-      it "renders the find page with an invalid date" do
+      it "redirects to the find page with an invalid date" do
         item1 = Fabricate(:item, created_at: 1.month.ago)
         item2 = Fabricate(:item)
         get :search, s: "2014-01-", e: "#{Date.today}"
-        expect(response).to render_template :find
+        expect(response).to redirect_to find_path
       end
-      it "sets flash notice" do
+      it "sets flash error message" do
         item1 = Fabricate(:item, created_at: 1.month.ago)
         item2 = Fabricate(:item)
         get :search, s: "", e: ""
