@@ -1,5 +1,7 @@
 .dialog.dialog-info.contain
-  = form_tag search_items_path, method: :get do
-    = text_field_tag :search, params[:s], class: "control", id: "from_date", name: "s", autocomplete: "off", placeholder: "from date"
-    = text_field_tag :search, params[:e], class: "control", id: "to_date", name: "e", autocomplete: "off", placeholder: "from date"
+  = form_tag search_items_path, class: "form-inline", method: :get do
+    .form-group
+      = text_field_tag :search, params[:s], class: "form-control", id: "from_date", name: "s", autocomplete: "off", placeholder: "from date"
+    .form-group
+      = text_field_tag :search, params[:e], class: "form-control", id: "to_date", name: "e", autocomplete: "off", placeholder: "from date"
     %input.btn.btn-default(type="submit" value="Search")
