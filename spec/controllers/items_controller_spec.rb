@@ -77,11 +77,11 @@ describe ItemsController do
         get :search, s: "", e: ""
         expect(assigns(:results)).to be_nil
       end
-      it "renders find page with empty params" do
+      it "redirects to the find page with empty params" do
         item1 = Fabricate(:item, created_at: 1.month.ago)
         item2 = Fabricate(:item)
         get :search, s: "", e: nil
-        expect(response).to render_template :find
+        expect(response).to redirect_to find_path
       end
       it "redirects to the find page with an invalid date" do
         item1 = Fabricate(:item, created_at: 1.month.ago)
