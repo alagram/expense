@@ -11,5 +11,8 @@ feature "User adds new item" do
     click_button "Add Item"
     expect(page).to have_content "Item successfully added."
   end
-  scenario "with invalid attributes"
+
+  scenario "with invalid attributes" do
+
+  end
 end
