@@ -1,0 +1,18 @@
+.table-responsive
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th Item Name
+        %th Price (All in GHS)
+        %th Date
+        %th Shop
+        %th
+    %tbody
+      - @results.each do |item|
+        %tr
+          %td= item.name
+          %td= item.price
+          %td= item.created_at.strftime("%b %d, %Y")
+          %td= item.shop_name
+          %td
+

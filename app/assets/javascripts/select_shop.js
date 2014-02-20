@@ -1,1 +1,1 @@
-$("#shop").selectpicker({style: 'btn-lg btn-primary', menuStyle: 'dropdown-inverse'});
+$(".shop").selectpicker({style: 'btn-lg btn-primary', menuStyle: 'dropdown-inverse'});

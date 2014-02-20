@@ -10,6 +10,7 @@ gem 'less-rails'
 gem 'therubyracer', :platform => :ruby
 gem 'jquery-ui-rails'
 gem 'designmodo-flatuipro-rails', '~> 1.2.2.0.branch'
+gem 'rack-mini-profiler'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -29,6 +30,7 @@ gem 'jquery-rails'
 group :development do
   # Use postgresql as the database for Active Record
   gem 'pg'
+  gem 'thin'
 end
 
 group :production do
@@ -38,19 +40,20 @@ group :production do
 end
 
 group :test do
-  # gem 'shoulda-matchers'
-  # gem 'fabrication'
-  # gem 'faker'
-  # gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'fabrication'
+  gem 'faker'
+  gem 'capybara'
   # gem 'launchy'
   # gem 'selenium-webdriver'
-  # gem 'database_cleaner', '~> 1.0.1'
+  gem 'database_cleaner', '~> 1.0.1'
 end
 
 group :test, :development do
-  # gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'pry'
   gem 'pry-nav'
+  gem 'rails-erd'
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

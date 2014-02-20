@@ -1,11 +1,12 @@
 %header.top-menu
-  %h2.logo Expenses
+  = link_to root_path do
+    %h2.logo Expenses
   %nav.top-menu-nav
     %ul.top-menu-nav-list
       %li
-        %a(href= "#") Mailer
+        = link_to "Add Item", new_item_path
       %li
-        %a(href= "#") Products
+        = link_to "Find Item", find_path
       %li
         %a(href= "#") Pricing
       %li

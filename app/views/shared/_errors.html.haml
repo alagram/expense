@@ -1,6 +1,6 @@
 - if object.errors.any?
   .row
-    .alert.alert-error.span8
+    .alert.alert-danger.col-md-10.col-md-offset-1
       %a.close{"data-dismiss" => "alert"} ×
       %ul
         - object.errors.full_messages.each do |msg|
