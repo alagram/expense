@@ -13,6 +13,12 @@ feature "User adds new item" do
   end
 
   scenario "with invalid attributes" do
-
+    visit root_path
+    click_link "Add Item"
+    fill_in "item_name", with: "Milk"
+    fill_in "item_description", with: "1 gallon"
+    fill_in "item_price", with: nil
+    click_button "Add Item"
+    expect(page).to have_content "Price is invalid"
   end
 end
