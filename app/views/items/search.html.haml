@@ -15,5 +15,5 @@
           %td= item.created_at.strftime("%b %d, %Y")
           %td= item.shop_name
           %td
-%strong= "Total: #{@results.map(&:price).inject(:+)}"
+%strong= "Total: #{calculate_total(@results)}"
 
