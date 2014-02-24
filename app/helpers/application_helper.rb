@@ -1,5 +1,5 @@
 module ApplicationHelper
   def calculate_total(collection)
-    collection.map(&:price).inject(:+) if collection.present?
+    collection.map(&:price).inject(:+)
   end
 end
