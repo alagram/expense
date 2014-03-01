@@ -50,3 +50,11 @@ test:
   pool: 5
   username: Albert
   password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: expense_production
+  pool: 5
+  username: Albert
+  password:
