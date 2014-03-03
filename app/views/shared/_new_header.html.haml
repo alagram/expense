@@ -1,0 +1,21 @@
+%header.header-11
+  .container
+    .row
+      .navbar.col-sm-12{role: "navigation"}
+        .navbar-header
+          %button.navbar-toggle{type: "button"}
+          = link_to root_path, class: "brand" do
+            %img{alt: "", height: "50", src: "/Infinity-Loop@2x.png", width: "50"}>/
+            Expense 201
+        .collapse.navbar-collapse.pull-right
+          %ul.nav.pull-left
+            %li.active
+              = link_to "HOME", root_path
+            %li
+              = link_to "ADD ITEM", new_item_path
+            %li
+              = link_to "FIND ITEM", find_path
+            %li
+              %a{href: "#"} CONTACT
+          %form.navbar-form.pull-left
+            = link_to "SIGN IN", sign_in_path, class: "btn btn-primary"
