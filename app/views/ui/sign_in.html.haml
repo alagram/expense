@@ -1,0 +1,25 @@
+.container
+  .alert.alert-notify.fade.in
+    %button.close{"data-dismiss" => "alert", type: "button"} ×
+    Please
+    %strong Sign In
+    if you already have an account
+.content
+  #login-social.col-md-8.col-md-offset-2
+    %h6 Sign in with Social Networks
+    %button.btn.btn-social-twitter.btn-lnger
+      %i.fui-twitter
+      Sign in with Twitter
+    %button.btn.btn-social-facebook.btn-lnger
+      %i.fui-facebook
+      Sign in with Facebook
+  #login-email.col-md-8.col-md-offset-2
+    %h6 - ELSE -
+    .form-group
+      %input.form-control{placeholder: "Username", type: "text"}/
+    .form-group
+      %input.form-control{placeholder: "Password", type: "text"}/
+    .form-group
+      %button.btn.btn-default.btn-wide Login
+    %p
+      %a{href: "#"} Need a new password?
