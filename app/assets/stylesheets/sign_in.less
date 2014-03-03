@@ -1,0 +1,82 @@
+@import "custom_var";
+
+.alert {
+
+  &.alert-notify {
+    background: @gray-lighter;
+    border: 1px solid @gray-light;
+  }
+
+  strong {
+  color: @clifford-red
+  }
+}
+
+.content {
+  margin-top: @menus-padding-left;
+}
+
+.alert-notify {
+  margin: 30px 30px 70px 30px;
+}
+
+#login-social, #login-email {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  h6, .h6 {
+    margin-bottom: 24px;
+    color: @primary-bg;
+    font-size: @h6-font-size;
+  }
+}
+
+#login-social {
+
+  .btn-lnger {
+    font-size: @paragraph-font-size;
+    display: block;
+    padding: 16px 0;
+    width: @sign-up-social-item-width;
+    margin-bottom: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    i {
+      font-size: 20px;
+      position: absolute;
+      left: 20px;
+      top: 15px;
+    }
+
+    a {
+      color: white;
+    }
+
+  }
+
+}
+
+#login-email {
+
+  p {
+    margin: 20px 0 20px 0;
+    font-size: @paragraph-font-size;
+
+    a {
+      color: @gray-dark;
+    }
+
+  }
+
+  .form-control {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 369px;
+  }
+
+}
