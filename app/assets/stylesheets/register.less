@@ -1,0 +1,70 @@
+@import "custom_var";
+
+.alert {
+
+  &.alert-notify {
+    background: @gray-lighter;
+    border: 1px solid @gray-light;
+  }
+
+  strong {
+  color: @clifford-red
+  }
+}
+
+.content {
+  margin-top: @menus-padding-left;
+}
+
+.alert-notify {
+  margin: 30px 30px 70px 30px;
+}
+
+#sign-up-email, #sign-up-social {
+  h6, .h6 {
+      margin-bottom: 24px;
+      color: @primary-bg;
+      font-size: @h6-font-size;
+  }
+}
+
+#sign-up-social {
+
+    border-right: 2px solid #f7f8f8;
+
+  p {
+      color: @gray-dark;
+      width: @sign-up-social-item-width;
+      margin: 0 0 20px 0;
+  }
+
+  .btn-lnger {
+      font-size: @paragraph-font-size;
+      display: block;
+      width: @sign-up-social-item-width;
+      padding: 16px 0;
+      margin-bottom: 18px;
+      position: relative;
+
+      i {
+        font-size: 20px;
+        position: absolute;
+        left: 20px;
+        top: 15px;
+      }
+
+      a {
+        color: white;
+      }
+  }
+
+}
+
+#sign-up-email {
+
+  .form-control {
+    height: 40px;
+    width: 369px;
+  }
+
+}
