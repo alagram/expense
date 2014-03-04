@@ -1,6 +1,4 @@
 Expense::Application.routes.draw do
-  get 'ui(/:action)', controller: 'ui'
-  root to: 'items#index'
 
   resources :items, only: [:new, :create] do
     collection do
@@ -8,5 +6,10 @@ Expense::Application.routes.draw do
     end
   end
 
+  get 'ui(/:action)', controller: 'ui'
+  root to: 'items#index'
+
   get 'find', to: 'items#find'
+  get 'sign_in', to: 'sessions#new'
+  get 'register', to: 'users#new'
 end
