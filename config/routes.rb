@@ -10,9 +10,10 @@ Expense::Application.routes.draw do
   resources :sessions, only:[:create]
 
   get 'ui(/:action)', controller: 'ui'
-  root to: 'items#index'
+  # root to: 'items#index'
 
   get 'find', to: 'items#find'
   get 'sign_in', to: 'sessions#new'
   get 'register', to: 'users#new'
+  get 'home', to: 'items#index'
 end
