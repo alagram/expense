@@ -11,9 +11,9 @@
     %h6 - ELSE -
     = form_tag sessions_path do
       .form-group
-        %input.form-control{placeholder: "Username", type: "text"}/
+        = text_field_tag :username, nil, class: "form-control", placeholder: "Username"
       .form-group
-        %input.form-control{placeholder: "Password", type: "text"}/
+        = password_field_tag :password, nil, class: "form-control", placeholder: "Password"
       .form-group
         %button.btn.btn-default.btn-wide Login
     %p
