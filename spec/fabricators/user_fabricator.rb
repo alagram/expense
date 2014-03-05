@@ -1,4 +1,4 @@
 Fabricator(:user) do
-  username { Faker::Name.first_name }
+  username { Faker::Lorem.words(2).join }
   password { 'password' }
 end
