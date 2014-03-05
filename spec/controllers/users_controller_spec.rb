@@ -11,6 +11,7 @@ describe UsersController do
 
   describe "POST create" do
     context "with valid attributes" do
+
       it "redirects to sign in page" do
         post :create, user: Fabricate.attributes_for(:user)
         expect(response).to redirect_to sign_in_path
@@ -24,12 +25,26 @@ describe UsersController do
         post :create, user: Fabricate.attributes_for(:user)
         expect(flash[:success]).to be_present
       end
+
     end
 
     context "with invalid attributes" do
-      it "renders new page"
-      it "sets flash danger message"
-      it "sets @user instance variable"
+
+      it "does not create a user" do
+        post :create, user: Fabricate.attributes_for(:user, username: nil)
+        expect(User.count).to eq(0)
+      end
+
+      it "renders new page" do
+        post :create, user: Fabricate.attributes_for(:user, username: nil)
+        expect(response).to render_template :new
+      end
+
+      it "sets @user instance variable" do
+        post :create, user: Fabricate.attributes_for(:user, username: nil)
+        expect(assigns(:user)).to be_instance_of(User)
+      end
+
     end
   end
 end
