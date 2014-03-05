@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :shop
+  belongs_to :user
 
   validates_presence_of :name, :price
   validates :price, numericality: true, format: { with: /^\d{1,6}(\.\d{0,2})?$/, multiline: true }
