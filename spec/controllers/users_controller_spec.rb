@@ -8,4 +8,7 @@ describe UsersController do
       expect(assigns(:user)).to be_instance_of(User)
     end
   end
+
+  describe "POST create" do
+  end
 end
