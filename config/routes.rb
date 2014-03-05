@@ -16,4 +16,5 @@ Expense::Application.routes.draw do
   get 'sign_in', to: 'sessions#new'
   get 'register', to: 'users#new'
   get 'home', to: 'items#index'
+  get 'sign_out', to: 'sessions#destroy'
 end
