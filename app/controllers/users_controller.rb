@@ -6,8 +6,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to sign_in_path
       flash[:success] = "Registration successful. Please sign in!"
+      redirect_to sign_in_path
+    else
+      render :new
     end
   end
 
