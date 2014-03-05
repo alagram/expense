@@ -2,8 +2,10 @@
   .alert.alert-notify.fade.in
     %button.close{"data-dismiss" => "alert", type: "button"} ×
     You can
-    %strong Log In
+    = link_to sign_in_path do
+      %strong Sign In
     if you already have an account
+  = render 'shared/errors', object: @user
 .content
   #sign-up-social.col-md-5.col-md-offset-1
     %h6 Register with Social Networks
