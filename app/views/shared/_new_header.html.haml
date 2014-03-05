@@ -9,13 +9,15 @@
             Expense 201
         .collapse.navbar-collapse.pull-right
           %ul.nav.pull-left
-            %li.active
-              = link_to "HOME", root_path
             %li
               = link_to "ADD ITEM", new_item_path
             %li
               = link_to "FIND ITEM", find_path
             %li
               %a{href: "#"} CONTACT
-          %form.navbar-form.pull-left
-            = link_to "SIGN IN", sign_in_path, class: "btn btn-primary"
+          - unless current_user
+            %form.navbar-form.pull-left
+              = link_to "SIGN IN", sign_in_path, class: "btn btn-primary"
+          - else
+            %form.navbar-form.pull-left
+              = link_to "SIGN OUT", sign_out_path, class: "btn btn-primary"
