@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
   validates_uniqueness_of :username
-  validates_length_of :username, within: 5..20
+  validates_length_of :username, within: 3..20
   validates_presence_of :password, on: :create
   validates_length_of :password, within: 5..20
 end
