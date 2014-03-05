@@ -7,6 +7,7 @@ Expense::Application.routes.draw do
   end
 
   resources :users, only: [:create]
+  resources :sessions, only:[:create]
 
   get 'ui(/:action)', controller: 'ui'
   root to: 'items#index'
