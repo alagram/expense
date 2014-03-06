@@ -38,4 +38,25 @@ describe SessionsController do
       end
     end
   end
+
+  describe "DELETE destroy" do
+    it "it redirects to home path" do
+      bob = Fabricate(:user)
+      session[:user_id] = bob.id
+      delete :destroy
+      expect(response).to redirect_to root_path
+    end
+    it "clears the user from the session" do
+      bob = Fabricate(:user)
+      session[:user_id] = bob.id
+      delete :destroy
+      expect(session[:user_id]).to be_nil
+    end
+    it "sets flash notice message" do
+      bob = Fabricate(:user)
+      session[:user_id] = bob.id
+      delete :destroy
+      expect(flash[:notice]).to be_present
+    end
+  end
 end
