@@ -10,6 +10,5 @@ class ApplicationController < ActionController::Base
 
   def require_user
     redirect_to sign_in_path unless current_user
-    flash[:danger] = "Please sign in to perform this action."
   end
 end
