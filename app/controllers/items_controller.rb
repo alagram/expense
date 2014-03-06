@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   def search
     @results = Item.includes(:shop).search(Date.parse(params[:s]), Date.parse(params[:e]))
   rescue ArgumentError
-    flash[:error] = "Invalid date. Please check your input."
+    flash[:danger] = "Invalid date. Please check your input."
     redirect_to find_path
   end
 
