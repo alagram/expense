@@ -12,4 +12,9 @@ class SessionsController < ApplicationController
       flash[:danger] = "Invalid username or password."
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: "You've successfully signed out."
+  end
 end
