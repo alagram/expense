@@ -589,7 +589,7 @@ button:active {
   padding: 0;
   width: 30px;
   height: 30px;
-  background: url("../../../common-files/icons/menu-icon.png") 50% no-repeat;
+  background: url("/menu-icon.png") 50% no-repeat;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -902,7 +902,7 @@ section * {
   }
   .dockbar .menu-btn span {
     content: '';
-    background-image: url("../../../common-files/icons/menu-icon.png");
+    background-image: url("/menu-icon.png");
     width: 17px;
     height: 12px;
   }
@@ -1064,7 +1064,7 @@ body .colapsed-menu::-webkit-scrollbar {
   display: none;
 }
 /**
- * Header 10 stylesheet  
+ * Header 10 stylesheet
  * */
 .header-10 {
   z-index: 100;
@@ -1293,7 +1293,7 @@ body .colapsed-menu::-webkit-scrollbar {
   }
 }
 /**
- * Header 11 stylesheet  
+ * Header 11 stylesheet
  * */
 .header-11-startup-antiflicker {
   border-bottom: 1px #bdc3c7 solid;
@@ -1374,7 +1374,7 @@ body .colapsed-menu::-webkit-scrollbar {
   color: #16a085;
 }
 .header-11 .navbar .navbar-toggle {
-  background-image: url("../../../common-files/icons/menu-icon-header-8.png");
+  background-image: url("/icons/menu-icon-header-8.png");
   margin-top: 36px;
 }
 .header-11-sub {

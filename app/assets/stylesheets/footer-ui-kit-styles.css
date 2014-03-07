@@ -697,7 +697,7 @@ section * {
   }
   .dockbar .menu-btn span {
     content: '';
-    background-image: url("../../../common-files/icons/menu-icon.png");
+    background-image: url("/icons/menu-icon.png");
     width: 17px;
     height: 12px;
   }
@@ -859,7 +859,7 @@ body .colapsed-menu::-webkit-scrollbar {
   display: none;
 }
 /**
- * Footer 2 stylesheet  
+ * Footer 2 stylesheet
  * */
 .footer-2 {
   padding-top: 20px;
@@ -953,10 +953,10 @@ body .colapsed-menu::-webkit-scrollbar {
   .footer-2 > .container > *:after {
     content: " ";
     /* 1 */
-  
+
     display: table;
     /* 2 */
-  
+
   }
   .footer-2 > .container > *:after {
     clear: both;
@@ -982,7 +982,7 @@ body .colapsed-menu::-webkit-scrollbar {
   }
 }
 /**
- * Footer 3 stylesheet  
+ * Footer 3 stylesheet
  * */
 .footer-3 {
   font-size: 14px;
