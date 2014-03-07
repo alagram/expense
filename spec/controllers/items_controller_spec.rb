@@ -3,6 +3,7 @@ require 'spec_helper'
 describe ItemsController do
   describe "GET new" do
     it "sets the @item instance variable" do
+      set_current_user
       get :new
       expect(assigns(:item)).to be_new_record
       expect(assigns(:item)).to be_instance_of(Item)
@@ -11,6 +12,7 @@ describe ItemsController do
 
   describe "GET index" do
     it "sets the @items instance variable" do
+      set_current_user
       shop = Fabricate(:shop)
       egg = Fabricate(:item, shop_id: shop.id)
       milk = Fabricate(:item, shop_id: shop.id)
@@ -20,6 +22,8 @@ describe ItemsController do
   end
 
   describe "POST create" do
+
+    before { set_current_user }
 
     context "with valid attributes" do
       it "redirects to the new item page" do
@@ -61,6 +65,9 @@ describe ItemsController do
   end
 
   describe "GET search" do
+
+    before { set_current_user }
+
     context "with valid attributes" do
       it "sets @results instance variable" do
         item1 = Fabricate(:item, created_at: 1.month.ago)
@@ -71,29 +78,27 @@ describe ItemsController do
     end
 
     context "with invalid attributes" do
-      it "does not set @ results instance variable" do
+
+      before do
         item1 = Fabricate(:item, created_at: 1.month.ago)
         item2 = Fabricate(:item)
+      end
+
+      it "does not set @ results instance variable" do
         get :search, s: "", e: ""
         expect(assigns(:results)).to be_nil
       end
       it "redirects to the find page with empty params" do
-        item1 = Fabricate(:item, created_at: 1.month.ago)
-        item2 = Fabricate(:item)
         get :search, s: "", e: nil
         expect(response).to redirect_to find_path
       end
       it "redirects to the find page with an invalid date" do
-        item1 = Fabricate(:item, created_at: 1.month.ago)
-        item2 = Fabricate(:item)
         get :search, s: "2014-01-", e: "#{Date.today}"
         expect(response).to redirect_to find_path
       end
       it "sets flash error message" do
-        item1 = Fabricate(:item, created_at: 1.month.ago)
-        item2 = Fabricate(:item)
         get :search, s: "", e: ""
-        expect(flash[:error]).to be_present
+        expect(flash[:danger]).to be_present
       end
     end
   end
