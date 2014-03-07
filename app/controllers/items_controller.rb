@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :require_user
 
   def index
     @items = Item.all
