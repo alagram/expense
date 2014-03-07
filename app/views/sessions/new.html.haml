@@ -9,12 +9,12 @@
       Sign in with Facebook
   #login-email.col-md-8.col-md-offset-2
     %h6 - ELSE -
-    = form_tag sessions_path do
+    = form_tag sessions_path, autocomplete: "off" do
       .form-group
         = text_field_tag :username, nil, class: "form-control", placeholder: "Username"
       .form-group
         = password_field_tag :password, nil, class: "form-control", placeholder: "Password"
       .form-group
-        %button.btn.btn-default.btn-wide Login
+        %button.btn.btn-default.btn-wide Sign In
     %p
       %a{href: "#"} Need a new password?
