@@ -7,6 +7,11 @@ describe UsersController do
       expect(assigns(:user)).to be_new_record
       expect(assigns(:user)).to be_instance_of(User)
     end
+    it "redirects to home page for authenticated users" do
+      set_current_user
+      get :new
+      expect(response).to redirect_to home_path
+    end
   end
 
   describe "POST create" do
