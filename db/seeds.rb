@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+alice = User.create(username: "alice", password: "12345")
+joe = User.create(username: "joe", password: "abc321")
+john = User.create(username: "john", password: "123abc")
+koala = Shop.create(name: "Koala")
+shoprite = Shop.create(name: "Shoprite")
+marina = Shop.create(name: "Marina Mall")
+game = Shop.create(name: "Game")
+salinesta = Shop.create(name: "Salinesta")
+
+Shop.all.each do |shop|
+  5.times { Fabricate(:item, shop_id: shop.id, user: alice) }
+  5.times { Fabricate(:item, shop_id: shop.id, user: joe) }
+  5.times { Fabricate(:item, shop_id: shop.id, user: john) }
+end
