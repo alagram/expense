@@ -27,6 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt-ruby (3.0.1)
     bootstrap-on-rails (0.0.2)
       less-rails
     builder (3.1.4)
@@ -198,6 +199,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby (~> 3.0.0)
   bootstrap-on-rails
   capybara
   coffee-rails (~> 4.0.0)

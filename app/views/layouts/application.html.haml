@@ -1,14 +1,13 @@
 !!!
-%html
+%html{ style: "height: 100%" }
   %head
     %title Expense
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
-    = render 'shared/header'
+  %body{ style: "padding-top: 0" }
+    = render 'shared/new_header'
     .container
       .row
         = render 'shared/messages'
-        .span12
-          = yield
+    = yield
   = javascript_include_tag "application", "data-turbolinks-track" => true

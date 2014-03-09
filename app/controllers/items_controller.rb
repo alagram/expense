@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :require_user
 
   def index
-    @items = Item.all
+    @items = current_user.items.includes(:shop)
   end
 
   def new
@@ -9,7 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = Item.new(item_params.merge!(user: current_user))
     if @item.save
       flash[:success] = "Item successfully added."
       redirect_to new_item_path
@@ -19,9 +20,9 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @results = Item.includes(:shop).search(Date.parse(params[:s]), Date.parse(params[:e]))
+    @results = Item.includes(:shop).search(Date.parse(params[:s]), Date.parse(params[:e])).where(user: current_user)
   rescue ArgumentError
-    flash[:error] = "Invalid date. Please check your input."
+    flash[:danger] = "Invalid date. Please check your input."
     redirect_to find_path
   end
 

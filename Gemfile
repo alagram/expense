@@ -41,8 +41,6 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'fabrication'
-  gem 'faker'
   gem 'capybara'
   # gem 'launchy'
   # gem 'selenium-webdriver'
@@ -51,6 +49,8 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'fabrication'
+  gem 'faker'
   gem 'pry'
   gem 'pry-nav'
   gem 'rails-erd'
@@ -68,7 +68,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'

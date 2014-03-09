@@ -1,0 +1,27 @@
+.container
+  .alert.alert-notify.fade.in
+    You can
+    = link_to sign_in_path do
+      %strong Sign In
+    if you already have an account
+  = render 'shared/errors', object: @user
+.content
+  #sign-up-social.col-md-5.col-md-offset-1
+    %h6 Register with Social Networks
+    %p
+      You can Log In if you already have an account.
+    %button.btn.btn-social-twitter.btn-lnger
+      %i.fui-twitter
+      Register with Twitter
+    %button.btn.btn-social-facebook.btn-lnger
+      %i.fui-facebook
+      Register with Facebook
+  #sign-up-email.col-md-5.col-md-offset-1
+    %h6 Register with Email
+    = form_for @user do |f|
+      .form-group
+        = f.text_field :username, class: "form-control", placeholder: "Username"
+      .form-group
+        = f.password_field :password, class: "form-control", placeholder: "Password"
+      .form-group
+        %button.btn.btn-default.btn-wide Register
