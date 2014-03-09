@@ -13,9 +13,10 @@ describe ItemsController do
   describe "GET index" do
     it "sets the @items instance variable" do
       set_current_user
+      alice = current_user
       shop = Fabricate(:shop)
-      egg = Fabricate(:item, shop_id: shop.id)
-      milk = Fabricate(:item, shop_id: shop.id)
+      egg = Fabricate(:item, shop_id: shop.id, user: alice)
+      milk = Fabricate(:item, shop_id: shop.id, user: alice)
       get :index
       expect(assigns(:items)).to match_array([egg, milk])
     end
@@ -35,6 +36,12 @@ describe ItemsController do
         shop = Fabricate(:shop)
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(Item.count).to eq(1)
+      end
+      it "creates a new item associated with signed in user" do
+        alice = current_user
+        shop = Fabricate(:shop)
+        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
+        expect(Item.first.user).to eq(alice)
       end
       it "it creates an item associated with a shop" do
         shop = Fabricate(:shop)
@@ -70,10 +77,19 @@ describe ItemsController do
 
     context "with valid attributes" do
       it "sets @results instance variable" do
-        item1 = Fabricate(:item, created_at: 1.month.ago)
-        item2 = Fabricate(:item)
+        alice = current_user
+        item1 = Fabricate(:item, user: alice, created_at: 1.month.ago)
+        item2 = Fabricate(:item, user: alice)
         get :search, s: "2014-01-01", e: "#{Date.today}"
         expect(assigns(:results)).to match_array([item2, item1])
+      end
+      it "filter's the results based on current user's items" do
+        alice = current_user
+        item1 = Fabricate(:item, user: alice, created_at: 1.month.ago)
+        item2 = Fabricate(:item, user: alice, created_at: 2.weeks.ago)
+        item2 = Fabricate(:item)
+        get :search, s: "2014-01-01", e: "#{Date.today}"
+        expect(assigns(:results).all? { |item| item.user_id == alice.id }).to be_truthy
       end
     end
 
