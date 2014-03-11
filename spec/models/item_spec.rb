@@ -7,6 +7,7 @@ describe Item do
  it { should validate_numericality_of(:price) }
  it { should belong_to(:user) }
  it { should validate_numericality_of(:quantity).is_greater_than(0) }
+ it { should validate_numericality_of(:quantity).only_integer }
 
  describe "search" do
   it "returns an array of one item for an exact match" do
