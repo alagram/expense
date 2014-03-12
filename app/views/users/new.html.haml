@@ -18,7 +18,7 @@
       Register with Facebook
   #sign-up-email.col-md-5.col-md-offset-1
     %h6 Register with Email
-    = form_for @user do |f|
+    = form_for @user, html: { autocomplete: "off" } do |f|
       .form-group
         = f.text_field :username, class: "form-control", placeholder: "Username"
       .form-group
