@@ -26,6 +26,7 @@ feature "User adds new item" do
     fill_in "item_name", with: "Eggs"
     fill_in "item_description", with: "2 Crates of Eggs"
     fill_in "item_price", with: "23.00"
+    fill_in "item_quantity", with: 2
     fill_in "item_new_shop", with: "Faith Way Shop"
     click_button "Add Item"
   end

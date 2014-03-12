@@ -1,0 +1,25 @@
+.container
+  .row
+    .table-responsive.content
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th Item Name
+            %th Price (All in GHS)
+            %th Quantity
+            %th Total
+            %th Date
+            %th Shop
+            %th
+        %tbody
+          - obj.each do |item|
+            %tr
+              %td= item.name
+              %td= item.price
+              %td= item.quantity
+              %td= item.total
+              %td= item.created_at.strftime("%b %d, %Y")
+              %td= item.shop_name
+              %td
+      %strong= "Grand Total: #{grand_total(obj)}"
+
