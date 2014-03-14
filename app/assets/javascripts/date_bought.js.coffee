@@ -1,3 +1,3 @@
 jQuery ->
-  $('#date_bought').datepicker
+  $('#date_purchased').datepicker
     dateFormat: 'yy-mm-dd'
