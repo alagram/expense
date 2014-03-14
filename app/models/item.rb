@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
   validates_presence_of :name, :price, :quantity, :shop
   validates :price, numericality: true, format: { with: /^\d{1,6}(\.\d{0,2})?$/, multiline: true }
   validates_numericality_of :quantity, greater_than: 0, only_integer: true
-  validate :bought_at_cannot_be_in_the_future
+  validate :purchased_at_cannot_be_in_the_future
 
   attr_accessor :new_shop
   before_save :create_shop
@@ -20,9 +20,9 @@ class Item < ActiveRecord::Base
     self.price * self.quantity
   end
 
-  def bought_at_cannot_be_in_the_future
-    if bought_at.present? && bought_at > Date.today
-      errors[:base] << "Item bought cannot be in the future."
+  def purchased_at_cannot_be_in_the_future
+    if purchased_at.present? && purchased_at > Date.today
+      errors[:base] << "Purchase date cannot be in the future."
     end
   end
 
