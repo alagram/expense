@@ -13,6 +13,8 @@
       .form-group
         = f.text_field :quantity, class: 'form-control', placeholder: 'Quantity'
       .form-group
+        = f.text_field :bought_at, class: 'form-control', id: 'date_bought', placeholder: 'Date Bought'
+      .form-group
         = f.text_field :new_shop, class: 'form-control', placeholder: 'Shop Name'
       %h6 Or Select Shop
       .form-group
