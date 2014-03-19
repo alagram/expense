@@ -12,11 +12,11 @@ describe ItemsController do
 
   describe "GET index" do
     it "sets the @items instance variable" do
+      shop = Fabricate(:shop)
       set_current_user
       alice = current_user
-      shop = Fabricate(:shop)
-      egg = Fabricate(:item, shop_id: shop.id, user: alice)
-      milk = Fabricate(:item, shop_id: shop.id, user: alice)
+      egg = Fabricate(:item, user: alice, shop: shop)
+      milk = Fabricate(:item, user: alice, shop: shop)
       get :index
       expect(assigns(:items)).to match_array([egg, milk])
     end
@@ -25,37 +25,41 @@ describe ItemsController do
   describe "POST create" do
 
     before { set_current_user }
+    let!(:shop) { Fabricate(:shop) }
 
-    context "with valid attributes" do
-      it "redirects to the new item page" do
-        shop = Fabricate(:shop)
+    context "with valid attributes and shop_id" do
+
+      before do
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
+      end
+
+      it "redirects to the new item page" do
         expect(response).to redirect_to new_item_path
       end
       it "creates a new item" do
-        shop = Fabricate(:shop)
-        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(Item.count).to eq(1)
       end
       it "creates a new item associated with signed in user" do
         alice = current_user
-        shop = Fabricate(:shop)
-        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(Item.first.user).to eq(alice)
       end
       it "it creates an item associated with a shop" do
-        shop = Fabricate(:shop)
-        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(Item.first.shop).to eq(shop)
       end
       it "sets the flash success message" do
-        shop = Fabricate(:shop)
-        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
         expect(flash[:success]).to be_present
       end
+    end
+
+    context "with valid attributes and new_shop" do
       it "creates a shop and associtiates it with item if shop name is entered" do
-        post :create, item: Fabricate.attributes_for(:item, new_shop: "Koala")
+        post :create, item: Fabricate.attributes_for(:item, shop_id: nil, new_shop: "Koala")
         expect(Item.first.shop_name).to eq("Koala")
+      end
+      it "does not associtiate a shop to an item if both shop name and shop_id are entered" do
+        shop = Fabricate(:shop)
+        post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id, new_shop: "Bar Shop")
+        expect(Item.count).to eq(0)
       end
     end
 
@@ -68,26 +72,31 @@ describe ItemsController do
         post :create, item: Fabricate.attributes_for(:item, price: nil)
         expect(Item.count).to eq(0)
       end
+      it "does not create an item if shop_id and new_shop are absent" do
+        post :create, item: Fabricate.attributes_for(:item, new_shop: nil, shop_id: nil)
+        expect(Item.count).to eq(0)
+      end
     end
   end
 
   describe "GET search" do
 
     before { set_current_user }
+    let!(:shop) { Fabricate(:shop) }
 
     context "with valid attributes" do
       it "sets @results instance variable" do
         alice = current_user
-        item1 = Fabricate(:item, user: alice, created_at: 1.month.ago)
-        item2 = Fabricate(:item, user: alice)
+        item1 = Fabricate(:item, user: alice, created_at: 1.month.ago, shop: shop)
+        item2 = Fabricate(:item, user: alice, shop: shop)
         get :search, s: "2014-01-01", e: "#{Date.today}"
         expect(assigns(:results)).to match_array([item2, item1])
       end
       it "filter's the results based on current user's items" do
         alice = current_user
-        item1 = Fabricate(:item, user: alice, created_at: 1.month.ago)
-        item2 = Fabricate(:item, user: alice, created_at: 2.weeks.ago)
-        item2 = Fabricate(:item)
+        item1 = Fabricate(:item, user: alice, created_at: 1.month.ago, shop: shop)
+        item2 = Fabricate(:item, user: alice, created_at: 2.weeks.ago, shop: shop)
+        item2 = Fabricate(:item, shop: shop)
         get :search, s: "2014-01-01", e: "#{Date.today}"
         expect(assigns(:results).all? { |item| item.user_id == alice.id }).to be_truthy
       end
@@ -96,8 +105,9 @@ describe ItemsController do
     context "with invalid attributes" do
 
       before do
-        item1 = Fabricate(:item, created_at: 1.month.ago)
-        item2 = Fabricate(:item)
+        shop = Fabricate(:shop)
+        item1 = Fabricate(:item, created_at: 1.month.ago, shop: shop)
+        item2 = Fabricate(:item, shop: shop)
       end
 
       it "does not set @ results instance variable" do
