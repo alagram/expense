@@ -15,7 +15,7 @@
               %li
                 = link_to "FIND ITEM", find_path
               %li
-                %a{href: "#"} CONTACT
+                = link_to "CREATE SHOPPING LIST", new_shopping_list_path
           - if current_user
             %form.navbar-form.pull-left
               = link_to "SIGN OUT", sign_out_path, class: "btn btn-primary"
