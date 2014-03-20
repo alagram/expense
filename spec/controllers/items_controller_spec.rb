@@ -87,16 +87,15 @@ describe ItemsController do
     context "with valid attributes" do
       it "sets @results instance variable" do
         alice = current_user
-        item1 = Fabricate(:item, user: alice, created_at: 1.month.ago, shop: shop)
-        item2 = Fabricate(:item, user: alice, shop: shop)
+        item1 = Fabricate(:item, user: alice, purchased_at: 1.month.ago, shop: shop)
+        item2 = Fabricate(:item, user: alice, purchased_at: 2.weeks.ago, shop: shop)
         get :search, s: "2014-01-01", e: "#{Date.today}"
         expect(assigns(:results)).to match_array([item2, item1])
       end
       it "filter's the results based on current user's items" do
         alice = current_user
-        item1 = Fabricate(:item, user: alice, created_at: 1.month.ago, shop: shop)
-        item2 = Fabricate(:item, user: alice, created_at: 2.weeks.ago, shop: shop)
-        item2 = Fabricate(:item, shop: shop)
+        item1 = Fabricate(:item, user: alice, purchased_at: 1.month.ago, shop: shop)
+        item2 = Fabricate(:item, user: alice, purchased_at: 2.weeks.ago, shop: shop)
         get :search, s: "2014-01-01", e: "#{Date.today}"
         expect(assigns(:results).all? { |item| item.user_id == alice.id }).to be_truthy
       end
@@ -106,8 +105,8 @@ describe ItemsController do
 
       before do
         shop = Fabricate(:shop)
-        item1 = Fabricate(:item, created_at: 1.month.ago, shop: shop)
-        item2 = Fabricate(:item, shop: shop)
+        item1 = Fabricate(:item, purchased_at: 1.month.ago, shop: shop)
+        item2 = Fabricate(:item, purchased_at: 1.week.ago, shop: shop)
       end
 
       it "does not set @ results instance variable" do
