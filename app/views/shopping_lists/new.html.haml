@@ -1,0 +1,10 @@
+= render 'shared/errors', object: @shopping_list
+
+.content
+  #home.col-md-8.col-md-offset-2
+    %h6 New Shopping List
+    = form_for @shopping_list, html: { autocomplete: "off" } do |f|
+      .form-group
+        = f.text_field :name, class: "form-control", placeholder: "Name"
+      .form-group
+        %button.btn.btn-default-btn-wide Create Shopping List

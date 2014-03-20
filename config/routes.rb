@@ -8,6 +8,7 @@ Expense::Application.routes.draw do
   get 'find', to: 'items#find'
   get 'sign_in', to: 'sessions#new'
   get 'sign_out', to: 'sessions#destroy'
+  get 'new_shopping_list', to: 'shopping_lists#new'
 
   resources :items, only: [:new, :create] do
     collection do
@@ -17,6 +18,6 @@ Expense::Application.routes.draw do
 
   resources :users, only: [:create]
   resources :sessions, only:[:create]
-  resources :shopping_list, only:[:new]
+  resources :shopping_lists, only:[:create]
 
 end
