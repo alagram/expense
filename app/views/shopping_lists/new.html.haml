@@ -1,7 +1,6 @@
-= render 'shared/errors', object: @shopping_list
-
-.content
-  #home.col-md-8.col-md-offset-2
+.shpooing-list-wrap
+  #shopping-list.col-md-5.col-md-offset-1
+    = render 'shared/errors', object: @shopping_list
     %h6 New Shopping List
     = form_for @shopping_list, html: { autocomplete: "off" } do |f|
       .form-group
@@ -10,3 +9,4 @@
         = f.text_field :description, class: "form-control", placeholder: "Description"
       .form-group
         %button.btn.btn-default-btn-wide Create Shopping List
+  #listing.col-md-5.col-md-offset-1
