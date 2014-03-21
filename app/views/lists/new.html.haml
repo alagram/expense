@@ -1,12 +1,16 @@
 .shpooing-list-wrap
   #shopping-list.col-md-5.col-md-offset-1
-    = render 'shared/errors', object: @shopping_list
-    %h6 New Shopping List
-    = form_for @shopping_list, html: { autocomplete: "off" } do |f|
+    = render 'shared/errors', object: @list
+    %h6 New List
+    = form_for @list, html: { autocomplete: "off" } do |f|
       .form-group
         = f.text_field :name, class: "form-control", placeholder: "Name"
         %br
         = f.text_field :description, class: "form-control", placeholder: "Description"
       .form-group
-        %button.btn.btn-default-btn-wide Create Shopping List
+        %button.btn.btn-default-btn-wide Create List
   #listing.col-md-5.col-md-offset-1
+    %ul
+    - @lists.each do |list|
+      %li
+        = link_to list.name, list_path(list)

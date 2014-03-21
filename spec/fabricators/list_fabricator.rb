@@ -1,3 +1,3 @@
-Fabricator(:shopping_list) do
+Fabricator(:list) do
   name { Faker::Lorem.word.capitalize }
 end

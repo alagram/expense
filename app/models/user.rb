@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :items
   has_secure_password validations: false
+  has_many :lists
 
   validates_presence_of :username
   validates_uniqueness_of :username
