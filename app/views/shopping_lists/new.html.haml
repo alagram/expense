@@ -6,5 +6,7 @@
     = form_for @shopping_list, html: { autocomplete: "off" } do |f|
       .form-group
         = f.text_field :name, class: "form-control", placeholder: "Name"
+        %br
+        = f.text_field :description, class: "form-control", placeholder: "Description"
       .form-group
         %button.btn.btn-default-btn-wide Create Shopping List
