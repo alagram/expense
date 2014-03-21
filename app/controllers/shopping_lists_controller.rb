@@ -1,4 +1,7 @@
 class ShoppingListsController < ApplicationController
+
+  before_action :require_user
+
   def new
     @shopping_list = ShoppingList.new
   end
