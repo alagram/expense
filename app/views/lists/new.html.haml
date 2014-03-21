@@ -1,5 +1,5 @@
-.shpooing-list-wrap
-  #shopping-list.col-md-5.col-md-offset-1
+.list-wrap
+  #list.col-md-5.col-md-offset-1
     = render 'shared/errors', object: @list
     %h6 New List
     = form_for @list, html: { autocomplete: "off" } do |f|
@@ -10,6 +10,7 @@
       .form-group
         %button.btn.btn-default-btn-wide Create List
   #listing.col-md-5.col-md-offset-1
+    %h6 Your Lists
     %ul
     - @lists.each do |list|
       %li
