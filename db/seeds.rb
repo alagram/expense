@@ -15,7 +15,7 @@ game = Shop.create(name: "Game")
 salinesta = Shop.create(name: "Salinesta")
 
 Shop.all.each do |shop|
-  3.times { Fabricate(:item, user: alice, shop: shoprite) }
-  2.times { Fabricate(:item, user: joe, shop: marina) }
-  4.times { Fabricate(:item, user: john, shop: game) }
+  3.times { Fabricate(:item, user: alice, shop: shop) }
+  2.times { Fabricate(:item, user: joe, shop: shop) }
+  4.times { Fabricate(:item, user: john, shop: shop) }
 end
