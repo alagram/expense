@@ -1,12 +1,11 @@
 .list-wrap
   #list.col-md-5.col-md-offset-1
-    = render 'shared/errors', object: @list
     %h6 New List
-    = form_for @list, html: { autocomplete: "off" } do |f|
+    = bootstrap_form_for @list, html: { autocomplete: "off" } do |f|
       .form-group
-        = f.text_field :name, class: "form-control", placeholder: "Name"
+        = f.text_field :name, hide_label: true, class: "form-control", placeholder: "Name"
         %br
-        = f.text_field :description, class: "form-control", placeholder: "Description"
+        = f.text_field :description, hide_label: true, class: "form-control", placeholder: "Description"
       .form-group
         %button.btn.btn-default-btn-wide Create List
   #listing.col-md-5.col-md-offset-1

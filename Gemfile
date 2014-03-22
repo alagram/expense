@@ -11,6 +11,7 @@ gem 'therubyracer', :platform => :ruby
 gem 'jquery-ui-rails'
 gem 'designmodo-flatuipro-rails', '~> 1.2.2.0.branch'
 gem 'rack-mini-profiler'
+gem 'bootstrap_form', :git => "git://github.com/bootstrap-ruby/rails-bootstrap-forms"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
