@@ -20,7 +20,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @shopping_list_item = ShoppingListItem.new
+    @list_item = ListItem.new
     @list = List.find(params[:id])
   end
 
