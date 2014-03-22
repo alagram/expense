@@ -6,10 +6,8 @@
   .row
     %h6 Fill your shopping list.
     %br
-    = form_for [@list, @shopping_list_item], html: { class: "form-inline" } do |f|
-      .form-group
-        = f.text_field :name, class: "form-control", placeholder: "Name"
-      .form-group
-        %button.btn.btn-default-btn-wide Save
-        = link_to "Cancel", @shopping_list
+    = bootstrap_form_for [@list, @list_item], layout: :inline do |f|
+      = f.text_field :name, class: "form-control", placeholder: "Name", hide_label: true
+      %button.btn.btn-primary Save
+      = link_to "Cancel", @shopping_list, class: "btn btn-default"
 
