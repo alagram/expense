@@ -1,13 +1,28 @@
 .container
   %p.lead
-    = @list.name
+    = h(@list.name)
     %hr
 
   .row
     %h6 Fill your shopping list.
     %br
-    = bootstrap_form_for [@list, @list_item], layout: :inline do |f|
+    = bootstrap_form_for [@list, @list_item], html: { autocomplete: "off" }, layout: :horizontal, control_col: "col-md-3", label_col: "col-sm-0" do |f|
       = f.text_field :name, class: "form-control", placeholder: "Name", hide_label: true
-      %button.btn.btn-primary Save
-      = link_to "Cancel", @shopping_list, class: "btn btn-default"
+      = f.form_group do
+        = f.submit "Save", class: "btn btn-primary"
+        = link_to "Cancel", @list, class: "btn btn-default"
+
+    .table-responsive.content.col-md-4
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th.strong= @list.name
+            %th
+        %tbody
+          - @list_items.each do |list_item|
+            %tr
+              %td= list_item.name
+              %td
+                = link_to list_list_item_path(@item, list_item), method: :delete, confirm: "Are you sure?" do
+                  .fui-cross-inverted.text-primary
 
