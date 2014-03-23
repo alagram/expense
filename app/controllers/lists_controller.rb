@@ -22,6 +22,7 @@ class ListsController < ApplicationController
   def show
     @list_item = ListItem.new
     @list = List.find(params[:id])
+    @list_items = @list.list_items
   end
 
 
