@@ -1,16 +1,18 @@
 class ListItemsController < ApplicationController
 
+  before_action :require_user
+
   def create
-    list = List.find(params[:list_id])
+    @list = List.find(params[:list_id])
 
-    list_item = list.list_items.build(list_item_params.merge!(user: current_user))
+    @list_item = @list.list_items.build(list_item_params.merge!(user: current_user))
 
-    if list_item.save
+    if @list_item.save
       flash[:success] = "List Item added!"
-      redirect_to list_list_items_path
+      redirect_to @list
     else
-      list_item = list.list_items.reload
-      render 'list_items/show'
+      @list_items = @list.list_items.reload
+      render 'lists/show'
     end
   end
 

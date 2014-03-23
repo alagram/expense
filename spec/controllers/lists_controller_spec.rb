@@ -72,8 +72,22 @@ describe ListsController do
         get :show, id: list.id
         expect(assigns(:list)).to eq(list)
       end
+      it "sets @list_items" do
+        set_current_user
+        alice = current_user
+        list = Fabricate(:list)
+        list_item1 = Fabricate(:list_item, list: list, user: alice)
+        list_item2 = Fabricate(:list_item, list: list, user: alice)
+        get :show, id: list.id
+        expect(assigns(:list_items)).to match_array([list_item1, list_item2])
+      end
     end
 
-    context "with unauthenticated users"
+    context "with unauthenticated users" do
+      it "redirects to sign in page" do
+        post :create, list: Fabricate.attributes_for(:list)
+        expect(response).to redirect_to sign_in_path
+      end
+    end
   end
 end
