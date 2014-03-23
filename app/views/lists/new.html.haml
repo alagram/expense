@@ -13,4 +13,4 @@
     %ul
     - @lists.each do |list|
       %li
-        = link_to list.name, list_path(list)
+        = link_to h(list.name), list_path(list)
