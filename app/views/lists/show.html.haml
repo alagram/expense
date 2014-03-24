@@ -23,6 +23,6 @@
             %tr
               %td= list_item.name
               %td
-                = link_to list_list_item_path(@item, list_item), method: :delete, confirm: "Are you sure?" do
+                = link_to list_list_item_path(@list, list_item), method: :delete, data: { confirm: "Are you sure?"} do
                   .fui-cross-inverted.text-primary
 
