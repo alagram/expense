@@ -9,6 +9,7 @@ describe Item do
  it { should belong_to(:user) }
  it { should validate_numericality_of(:quantity).is_greater_than(0) }
  it { should validate_numericality_of(:quantity).only_integer }
+ it { should validate_numericality_of(:price).is_greater_than(0) }
 
  describe "search" do
 
