@@ -10,7 +10,10 @@
         %button.btn.btn-default-btn-wide Create List
   #listing.col-md-5.col-md-offset-1
     %h6 Your Lists
-    %ul
-    - @lists.each do |list|
-      %li
-        = link_to h(list.name), list_path(list)
+    - if @lists.exists?
+      %ul
+      - @lists.each do |list|
+        %li
+          = link_to h(list.name), list_path(list)
+    - else
+      %h7 There are no lists to display. Please create one.
