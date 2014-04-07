@@ -10,6 +10,7 @@ class Item < ActiveRecord::Base
 
   attr_accessor :new_shop
   before_save :create_shop
+  after_validation :shop_exists?
 
   delegate :name, to: :shop, prefix: true
 
@@ -40,5 +41,12 @@ class Item < ActiveRecord::Base
 
   def new_shop_blank?
     new_shop.blank?
+  end
+
+  def shop_exists?
+    if Shop.exists?(name: new_shop)
+      errors[:base] << "Shop already exist. Please select shop instead."
+      false
+    end
   end
 end

@@ -25,9 +25,10 @@ describe ItemsController do
   describe "POST create" do
 
     before { set_current_user }
-    let!(:shop) { Fabricate(:shop) }
 
     context "with valid attributes and shop_id" do
+
+      let!(:shop) { Fabricate(:shop) }
 
       before do
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id)
@@ -60,6 +61,12 @@ describe ItemsController do
         shop = Fabricate(:shop)
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id, new_shop: "Bar Shop")
         expect(Item.count).to eq(0)
+      end
+      it "does not create a shop if shop already exist" do
+        shop = Fabricate(:shop, name: "Game")
+        post :create, item: Fabricate.attributes_for(:item, shop_id: nil, new_shop: "Game")
+        expect(Item.count).to eq(0)
+        expect(Shop.count).to eq(1)
       end
     end
 
