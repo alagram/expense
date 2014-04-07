@@ -72,6 +72,7 @@ describe ListsController do
         get :show, id: list.id
         expect(assigns(:list)).to eq(list)
       end
+
       it "sets @list_items" do
         set_current_user
         alice = current_user
@@ -88,6 +89,36 @@ describe ListsController do
         post :create, list: Fabricate.attributes_for(:list)
         expect(response).to redirect_to sign_in_path
       end
+    end
+  end
+
+  describe "DELETE destroy" do
+
+    it_behaves_like "requires sign in" do
+      list = Fabricate(:list)
+      let(:action) { delete :destroy, id: list.id }
+    end
+
+    it "sets @list" do
+      set_current_user
+      list = Fabricate(:list)
+      delete :destroy, id: list.id
+      expect(assigns(:list)).to eq(list)
+    end
+
+    it "deletes list" do
+      set_current_user
+      alice = current_user
+      list = Fabricate(:list, user: alice)
+      delete :destroy, id: list.id
+      expect(List.count).to eq(0)
+    end
+
+    it "redirects to new_list page" do
+      set_current_user
+      list = Fabricate(:list)
+      delete :destroy, id: list.id
+      expect(response).to redirect_to new_list_path
     end
   end
 end

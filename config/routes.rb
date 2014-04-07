@@ -18,7 +18,7 @@ Expense::Application.routes.draw do
 
   resources :users, only: [:create]
   resources :sessions, only:[:create]
-  resources :lists, only:[:create, :show] do
+  resources :lists, only:[:create, :show, :destroy, :edit] do
     resources :list_items, only:[:create, :destroy]
   end
 

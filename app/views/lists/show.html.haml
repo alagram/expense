@@ -1,6 +1,7 @@
 .container
   %p.lead
     = h(@list.name)
+    = link_to "Delete", list_path(@list), method: :delete, method: :delete, data: { confirm: "Are you sure?"}, class: "pull-right"
     %hr
 
   .row

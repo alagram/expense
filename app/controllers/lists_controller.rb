@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
 
   before_action :require_user
+  before_action :find_list, only: [:show, :destroy]
 
   def new
     @list = List.new
@@ -21,8 +22,13 @@ class ListsController < ApplicationController
 
   def show
     @list_item = ListItem.new
-    @list = List.find(params[:id])
     @list_items = @list.list_items
+  end
+
+  def destroy
+    @list.destroy if @list.user == current_user
+    redirect_to new_list_path
+    flash[:alert] = "List with all associated contents successfully deleted."
   end
 
 
@@ -30,5 +36,9 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name, :description)
+  end
+
+  def find_list
+    @list = List.find(params[:id])
   end
 end
