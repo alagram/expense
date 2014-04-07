@@ -134,4 +134,100 @@ describe ItemsController do
       end
     end
   end
+
+  describe "GET edit" do
+    it_behaves_like "requires sign in" do
+      shop = Fabricate(:shop)
+      item = Fabricate(:item, shop: shop)
+      let(:action) { get :edit, id: item.id }
+    end
+
+    it "sets @item" do
+      set_current_user
+      shop = Fabricate(:shop)
+      item = Fabricate(:item, shop: shop)
+      get :edit, id: item.id
+      expect(assigns(:item)).to eq(item)
+    end
+  end
+
+  describe "PATCH update" do
+
+    let(:shop) { Fabricate(:shop) }
+    let(:item) { Fabricate(:item, shop: shop) }
+
+    it_behaves_like "requires sign in" do
+      let(:action) { patch :update, id: item.id, item: Fabricate.attributes_for(:item) }
+    end
+
+    context "with valid attributes" do
+      before do
+        set_current_user
+      end
+
+      it "sets @item" do
+        patch :update, id: item.id, item: Fabricate.attributes_for(:item)
+        expect(assigns(:item)).to eq(item)
+      end
+      it "changes attributes of item" do
+        patch :update, id: item.id, item: Fabricate.attributes_for(:item, price: 20)
+        expect(item.reload.price).to eq(20)
+      end
+      it "redirects to the root path" do
+        patch :update, id: item.id, item: Fabricate.attributes_for(:item, price: 20)
+        expect(response).to redirect_to root_path
+      end
+      it "sets flash message" do
+        patch :update, id: item.id, item: Fabricate.attributes_for(:item, price: 20)
+        expect(flash[:alert]).to be_present
+      end
+    end
+
+    context "with invalid attributes" do
+
+      before do
+        set_current_user
+      end
+
+      it "does not changes attributes of item" do
+        patch :update, id: item.id, item: Fabricate.attributes_for(:item, price: nil, name: "Eggs")
+        expect(item.reload.name).to_not eq("Eggs")
+      end
+      it "renders edit page" do
+        patch :update, id: item.id, item: Fabricate.attributes_for(:item, price: nil, name: "Eggs")
+        expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe "DELETE destroy" do
+
+    let(:shop) { Fabricate(:shop) }
+    let(:item) { Fabricate(:item, shop: shop) }
+
+    before do
+      set_current_user
+    end
+
+    it_behaves_like "requires sign in" do
+      let(:action) { delete :destroy, id: item.id }
+    end
+
+    it "redirects to root path" do
+      delete :destroy, id: item.id
+      expect(response).to redirect_to root_path
+    end
+    it "sets @item" do
+      delete :destroy, id: item.id
+      expect(assigns(:item)).to eq(item)
+    end
+    it "deletes an item" do
+      delete :destroy, id: item.id
+      expect(Item.count).to eq(0)
+    end
+    it "sets flash message" do
+      delete :destroy, id: item.id
+      expect(flash[:alert]).to be_present
+    end
+  end
 end

@@ -10,7 +10,7 @@ Expense::Application.routes.draw do
   get 'sign_out', to: 'sessions#destroy'
   get 'new_list', to: 'lists#new'
 
-  resources :items, only: [:new, :create] do
+  resources :items, only: [:new, :create, :edit, :update, :destroy] do
     collection do
       get 'search', to: 'items#search'
     end

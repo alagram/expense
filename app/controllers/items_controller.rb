@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :require_user
+  before_action :find_item, only: [:edit, :update, :destroy]
 
   def index
     @items = current_user.items.includes(:shop)
@@ -26,9 +27,31 @@ class ItemsController < ApplicationController
     redirect_to find_path
   end
 
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      flash[:alert] = "Item Updated."
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @item.destroy
+    flash[:alert] = "Item deleted."
+    redirect_to root_path
+  end
+
   private
 
   def item_params
     params.require(:item).permit(:name, :price, :shop_id, :new_shop, :description, :quantity, :purchased_at)
+  end
+
+  def find_item
+    @item = Item.find(params[:id])
   end
 end
