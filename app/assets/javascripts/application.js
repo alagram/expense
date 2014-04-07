@@ -31,5 +31,4 @@
 //= require bootstrap/tab
 //= require bootstrap/transition
 //= require flatuipro
-//= require turbolinks
 //= require_tree .
