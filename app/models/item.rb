@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
   delegate :name, to: :shop, prefix: true
 
   def self.search(start_date, end_date)
-    where("purchased_at::date >= ? AND purchased_at::date <= ?", start_date, end_date).order("created_at DESC")
+    where("purchased_at::date >= ? AND purchased_at::date <= ?", start_date, end_date).order("purchased_at DESC")
   end
 
   def total
