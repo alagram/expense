@@ -11,6 +11,7 @@ gem 'therubyracer', :platform => :ruby
 gem 'jquery-ui-rails'
 gem 'designmodo-flatuipro-rails', '~> 1.2.2.0.branch'
 gem 'rack-mini-profiler'
+gem 'bootstrap_form', :git => "git://github.com/bootstrap-ruby/rails-bootstrap-forms"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -57,7 +58,7 @@ group :test, :development do
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

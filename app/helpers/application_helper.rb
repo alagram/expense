@@ -1,5 +1,5 @@
 module ApplicationHelper
   def grand_total(collection)
-    collection.map(&:price).inject(:+)
+    collection.map(&:total).inject(:+)
   end
 end

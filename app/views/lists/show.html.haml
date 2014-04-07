@@ -1,0 +1,29 @@
+.container
+  %p.lead
+    = h(@list.name)
+    = link_to "Delete", list_path(@list), method: :delete, method: :delete, data: { confirm: "Are you sure?"}, class: "pull-right"
+    %hr
+
+  .row
+    %h6 Fill your shopping list.
+    %br
+    = bootstrap_form_for [@list, @list_item], html: { autocomplete: "off" }, layout: :horizontal, control_col: "col-md-3", label_col: "col-sm-0" do |f|
+      = f.text_field :name, class: "form-control", placeholder: "Name", hide_label: true
+      = f.form_group do
+        = f.submit "Save", class: "btn btn-primary"
+        = link_to "Cancel", @list, class: "btn btn-default"
+
+    .table-responsive.content.col-md-4
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th.strong= @list.name
+            %th
+        %tbody
+          - @list_items.each do |list_item|
+            %tr
+              %td= list_item.name
+              %td
+                = link_to list_list_item_path(@list, list_item), method: :delete, data: { confirm: "Are you sure?"} do
+                  .fui-cross-inverted.text-primary
+

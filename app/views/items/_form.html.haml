@@ -1,0 +1,20 @@
+.content
+  #home.col-md-8.col-md-offset-2
+    = form_for @item, html: { autocomplete: "off" } do |f|
+      .form-group
+        = f.text_field :name, class: 'form-control', placeholder: 'Item'
+      .form-group
+        = f.text_field :description, class: 'form-control', placeholder: 'Description'
+      .form-group
+        = f.text_field :price, class: 'form-control', placeholder: 'Price'
+      .form-group
+        = f.text_field :quantity, class: 'form-control', placeholder: 'Quantity'
+      .form-group
+        = f.text_field :purchased_at, class: 'form-control', id: 'date_purchased', placeholder: 'Date Purchased'
+      .form-group
+        = f.text_field :new_shop, class: 'form-control', placeholder: 'Shop Name'
+      %h6 Or Select Shop
+      .form-group
+        = f.select :shop_id, Shop.all.map { |shop| [shop.name, shop.id] }, { include_blank: true }, class: 'shop'
+      .form-group
+        = f.submit (@item.new_record? ? "Add Item": "Update Item"), class: 'btn btn-default btn-wide'

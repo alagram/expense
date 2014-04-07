@@ -8,18 +8,20 @@
             %th Price (All in GHS)
             %th Quantity
             %th Total
-            %th Date
+            %th Date Purchased
             %th Shop
-            %th
+            %th Edit
+            %th Delete
         %tbody
           - obj.each do |item|
             %tr
-              %td= item.name
+              %td= h(item.name)
               %td= item.price
               %td= item.quantity
               %td= item.total
-              %td= item.created_at.strftime("%b %d, %Y")
-              %td= item.shop_name
-              %td
+              %td= item.purchased_at.strftime("%b %d, %Y")
+              %td= h(item.shop_name)
+              %td= link_to "Edit", edit_item_path(item)
+              %td= link_to "Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" }
       %strong= "Grand Total: #{grand_total(obj)}"
 

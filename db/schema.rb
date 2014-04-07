@@ -11,20 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310200915) do
+ActiveRecord::Schema.define(version: 20140323143134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: true do |t|
     t.string   "name"
-    t.decimal  "price",       precision: 8, scale: 2
+    t.decimal  "price",        precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "shop_id"
     t.string   "description"
     t.integer  "user_id"
     t.integer  "quantity"
+    t.datetime "purchased_at"
+  end
+
+  create_table "list_items", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "list_id"
+    t.integer  "user_id"
+  end
+
+  create_table "lists", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "shops", force: true do |t|

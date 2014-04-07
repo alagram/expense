@@ -1,0 +1,19 @@
+.list-wrap
+  #list.col-md-5.col-md-offset-1
+    %h6 New List
+    = bootstrap_form_for @list, html: { autocomplete: "off" } do |f|
+      .form-group
+        = f.text_field :name, hide_label: true, class: "form-control", placeholder: "Name"
+        %br
+        = f.text_field :description, hide_label: true, class: "form-control", placeholder: "Description"
+      .form-group
+        %button.btn.btn-default-btn-wide Create List
+  #listing.col-md-5.col-md-offset-1
+    %h6 Your Lists
+    - if @lists.exists?
+      %ul
+      - @lists.each do |list|
+        %li
+          = link_to h(list.name), list_path(list)
+    - else
+      %h7 There are no lists to display. Please create one.
