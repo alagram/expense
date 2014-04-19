@@ -32,7 +32,7 @@ class Item < ActiveRecord::Base
 
   def create_shop
     if new_shop.present? && shop_id.nil?
-      self.shop = Shop.create!(name: new_shop)
+      self.shop = Shop.create!(name: new_shop, user: user)
     elsif new_shop.present? && shop_id.present?
       errors[:base] << "Either enter shop name or select shop."
       false

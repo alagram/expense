@@ -57,6 +57,11 @@ describe ItemsController do
         post :create, item: Fabricate.attributes_for(:item, shop_id: nil, new_shop: "Koala")
         expect(Item.first.shop_name).to eq("Koala")
       end
+      it "creates a shop associated with signed in user" do
+        alice = current_user
+        post :create, item: Fabricate.attributes_for(:item, shop_id: nil, new_shop: "Koala")
+        expect(Shop.first.user).to eq(alice)
+      end
       it "does not associtiate a shop to an item if both shop name and shop_id are entered" do
         shop = Fabricate(:shop)
         post :create, item: Fabricate.attributes_for(:item, shop_id: shop.id, new_shop: "Bar Shop")
