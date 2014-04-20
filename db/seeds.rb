@@ -8,10 +8,9 @@
 alice = User.create(username: "alice", password: "12345")
 joe = User.create(username: "joe", password: "abc321")
 john = User.create(username: "john", password: "123abc")
-koala = Shop.create(name: "Koala")
-shoprite = Shop.create(name: "Shoprite")
-marina = Shop.create(name: "Marina Mall")
-game = Shop.create(name: "Game")
+koala = Shop.create(name: "Koala", user: alice)
+shoprite = Shop.create(name: "Shoprite", user: joe)
+marina = Shop.create(name: "Marina Mall", user: john)
 salinesta = Shop.create(name: "Salinesta")
 
 Shop.all.each do |shop|
