@@ -15,6 +15,6 @@
         = f.text_field :new_shop, class: 'form-control', placeholder: 'Shop Name'
       %h6 Or Select Shop
       .form-group
-        = f.select :shop_id, Shop.all.map { |shop| [shop.name, shop.id] }, { include_blank: true }, class: 'shop'
+        = f.select :shop_id, shop_for_user, { include_blank: true }, class: 'shop'
       .form-group
         = f.submit (@item.new_record? ? "Add Item": "Update Item"), class: 'btn btn-default btn-wide'
