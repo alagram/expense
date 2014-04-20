@@ -18,3 +18,6 @@
 /erd.pdf
 
 .DS_Store
+
+# Ignore compiled assets
+/public/assets/*
