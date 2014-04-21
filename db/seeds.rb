@@ -11,7 +11,6 @@ john = User.create(username: "john", password: "123abc")
 koala = Shop.create(name: "Koala", user: alice)
 shoprite = Shop.create(name: "Shoprite", user: joe)
 marina = Shop.create(name: "Marina Mall", user: john)
-salinesta = Shop.create(name: "Salinesta")
 
 Shop.all.each do |shop|
   3.times { Fabricate(:item, user: alice, shop: shop) }
