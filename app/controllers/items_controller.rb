@@ -53,5 +53,8 @@ class ItemsController < ApplicationController
 
   def find_item
     @item = Item.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The item you were looking for could not be found."
+    redirect_to root_path
   end
 end
