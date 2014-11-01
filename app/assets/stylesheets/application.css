@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require jquery.ui.all
+ *= require jquery-ui
  *= require whitespace-reset
  *= require rails_bootstrap_forms
  *= require_tree .

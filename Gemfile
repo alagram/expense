@@ -8,7 +8,7 @@ gem 'haml-rails'
 gem 'bootstrap-on-rails'
 gem 'less-rails'
 gem 'therubyracer', :platform => :ruby
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '5.0.2'
 gem 'designmodo-flatuipro-rails', '~> 1.2.2.0.branch'
 gem 'rack-mini-profiler'
 gem 'bootstrap_form', :git => "git://github.com/bootstrap-ruby/rails-bootstrap-forms"
@@ -33,6 +33,8 @@ group :development do
   # Use postgresql as the database for Active Record
   gem 'pg'
   gem 'thin'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
 group :production do

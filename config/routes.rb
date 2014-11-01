@@ -13,6 +13,7 @@ Expense::Application.routes.draw do
   resources :items, only: [:new, :create, :edit, :update, :destroy] do
     collection do
       get 'search', to: 'items#search'
+      get 'item_search', to: 'items#item_search'
     end
   end
 
@@ -21,5 +22,6 @@ Expense::Application.routes.draw do
   resources :lists, only:[:create, :show, :destroy, :edit] do
     resources :list_items, only:[:create, :destroy]
   end
+  resources :shops, only: :index
 
 end

@@ -1,6 +1,6 @@
 .content
   #home.col-md-8.col-md-offset-2
-    = form_for @item, html: { autocomplete: "off" } do |f|
+    = form_for @item do |f|
       .form-group
         = f.text_field :name, class: 'form-control', placeholder: 'Item'
       .form-group
@@ -12,9 +12,6 @@
       .form-group
         = f.text_field :purchased_at, class: 'form-control', id: 'date_purchased', placeholder: 'Date Purchased'
       .form-group
-        = f.text_field :new_shop, class: 'form-control', placeholder: 'Shop Name'
-      %h6 Or Select Shop
-      .form-group
-        = f.select :shop_id, shop_for_user, { include_blank: true }, class: 'shop'
+        = f.text_field :shop_name, class: 'form-control', placeholder: 'Shop Name', data: {autocomplete_source: shops_path}
       .form-group
         = f.submit (@item.new_record? ? "Add Item": "Update Item"), class: 'btn btn-default btn-wide'

@@ -20,7 +20,7 @@
               %td= item.quantity
               %td= item.total
               %td= item.purchased_at.strftime("%b %d, %Y")
-              %td= h(item.shop_name)
+              %td= h(item.shop.name)
               %td= link_to "Edit", edit_item_path(item)
               %td= link_to "Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" }
       %strong= "Grand Total: #{grand_total(obj)}"
