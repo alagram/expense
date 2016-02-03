@@ -17,6 +17,7 @@ describe Item do
 
   it "returns an array of one item for an exact match" do
     item = Fabricate(:item, purchased_at: 2.weeks.ago, shop: shop)
+    # binding.pry
     expect(Item.search("2014-02-01", Time.now)).to eq([item])
   end
   it "returns an array of all matches ordered by purchased at descending" do
